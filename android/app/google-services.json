@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "734238306529",
+    "project_id": "fir-apps-project-e6c57",
+    "storage_bucket": "fir-apps-project-e6c57.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734238306529:android:c5cb17d57b32e4ba7f07a0",
+        "android_client_info": {
+          "package_name": "ke.andiedevelopers.mynotesapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734238306529-a9l0buhhov3b29gu8ug0r6g720l8eauf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlXzbPDh0NjZe5nTgikbRuUlgmgXD2iCc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "734238306529-a9l0buhhov3b29gu8ug0r6g720l8eauf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "734238306529-b1lt1g6fietoh296ivoci30umcps4hcs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ke.andiedevelopers.mynotesapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734238306529:android:50893d1577a7d2a17f07a0",
+        "android_client_info": {
+          "package_name": "me.andie.andiesnotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734238306529-a9l0buhhov3b29gu8ug0r6g720l8eauf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlXzbPDh0NjZe5nTgikbRuUlgmgXD2iCc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "734238306529-a9l0buhhov3b29gu8ug0r6g720l8eauf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "734238306529-b1lt1g6fietoh296ivoci30umcps4hcs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ke.andiedevelopers.mynotesapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
