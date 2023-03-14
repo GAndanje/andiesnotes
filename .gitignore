@@ -44,4 +44,6 @@ app.*.map.json
 /android/app/release
 
 # sensitive environment variables
-.env
+*.env
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
