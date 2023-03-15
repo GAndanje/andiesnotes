@@ -70,12 +70,19 @@ class _RegisterViewState extends State<RegisterView> {
               } on FirebaseAuthException catch (e) {
                 // TODO
                 if (e.code == 'weak-password') {
+                  await showErrorDialogue(context, 'Weak password');
                   devtools.log('Weak password');
                 } else if (e.code == 'invalid-email') {
+                  await showErrorDialogue(context, 'Invalid email');
                   devtools.log('Invalid email');
                 } else if (e.code == 'email-already-in-use') {
+                  await showErrorDialogue(context, 'Email already in use');
                   devtools.log('Email already in use');
+                } else {
+                  await showErrorDialogue(context, 'Error: ${e.code}');
                 }
+              } catch (e) {
+                await showErrorDialogue(context, e.toString());
               }
             },
             child: const Text('Register'),
@@ -91,4 +98,23 @@ class _RegisterViewState extends State<RegisterView> {
       ),
     );
   }
+}
+
+Future<void> showErrorDialogue(BuildContext context, String text) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('An error occured!'),
+          content: Text(text),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      });
 }
