@@ -66,6 +66,10 @@ class _LoginViewState extends State<LoginView> {
                   password: password,
                 );
                 devtools.log(userCredentials.toString());
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/notes/',
+                  (_) => false,
+                );
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'user-not-found') {
                   devtools.log('User  not found');
