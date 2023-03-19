@@ -31,6 +31,7 @@ void main() {
         loginRoute: (context) => const LoginView(),
         registerRoute: (context) => const RegisterView(),
         notesRoute: (context) => const NotesView(),
+        verifyEmailRoute: (context) => const VerifyEmailView(),
       },
     ),
   );
@@ -50,15 +51,15 @@ class Homepage extends StatelessWidget {
             case ConnectionState.done:
               // TODO: Handle this case.
               final user = FirebaseAuth.instance.currentUser;
+              print('user: ${user}');
               if (user != null) {
                 if (user.emailVerified) {
-                  devtools.log('Verified');
                 } else {
                   return const VerifyEmailView();
                 }
-                return const NotesView();
-              } else {
                 return const LoginView();
+              } else {
+                return const RegisterView();
               }
             default:
               return const CircularProgressIndicator();
@@ -91,7 +92,6 @@ class _NotesViewState extends State<NotesView> {
                 case MenuAction.logout:
                   // TODO: Handle this case.
                   final shouldLogout = await showLogoutDialog(context);
-                  devtools.log(shouldLogout.toString());
                   if (shouldLogout) {
                     await FirebaseAuth.instance.signOut();
                     Navigator.of(context).pushNamedAndRemoveUntil(

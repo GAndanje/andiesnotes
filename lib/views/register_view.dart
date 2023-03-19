@@ -1,6 +1,6 @@
+import 'package:andiesnotes/utilities/showErrorDialogue.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer' as devtools show log;
 
 import '../constants/routes.dart';
 
@@ -61,23 +61,21 @@ class _RegisterViewState extends State<RegisterView> {
               final email = _email.text;
               final password = _password.text;
               try {
-                final userCredentials =
-                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                await FirebaseAuth.instance.createUserWithEmailAndPassword(
                   email: email,
                   password: password,
                 );
-                devtools.log(userCredentials.toString());
+                final user = await FirebaseAuth.instance.currentUser;
+                await user?.sendEmailVerification();
+                Navigator.of(context).pushNamed(verifyEmailRoute);
               } on FirebaseAuthException catch (e) {
                 // TODO
                 if (e.code == 'weak-password') {
                   await showErrorDialogue(context, 'Weak password');
-                  devtools.log('Weak password');
                 } else if (e.code == 'invalid-email') {
                   await showErrorDialogue(context, 'Invalid email');
-                  devtools.log('Invalid email');
                 } else if (e.code == 'email-already-in-use') {
                   await showErrorDialogue(context, 'Email already in use');
-                  devtools.log('Email already in use');
                 } else {
                   await showErrorDialogue(context, 'Error: ${e.code}');
                 }
@@ -98,23 +96,4 @@ class _RegisterViewState extends State<RegisterView> {
       ),
     );
   }
-}
-
-Future<void> showErrorDialogue(BuildContext context, String text) {
-  return showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('An error occured!'),
-          content: Text(text),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      });
 }
